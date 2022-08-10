@@ -1,0 +1,2 @@
+source /home/matthewrowley/psi4conda/etc/profile.d/conda.csh
+conda activate
