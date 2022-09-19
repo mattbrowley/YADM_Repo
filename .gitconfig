@@ -1,0 +1,7 @@
+[user]
+	email = Matt.B.Rowley@gmail.com
+	name = Matthew Rowley
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false

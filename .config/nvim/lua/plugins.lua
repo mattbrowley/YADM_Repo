@@ -55,6 +55,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim" -- show vertical rules to help with indentation
   use 'mbpowers/nvimager' -- View images in-line
   use 'sunjon/shade.nvim' -- Dim inactive windows
+  use 'stevearc/stickybuf.nvim' -- Lock nvim-tree and aerial windows
 
   -- General editing/utility Vim plugins
   use 'nvim-lua/popup.nvim'
