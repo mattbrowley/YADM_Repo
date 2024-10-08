@@ -80,7 +80,11 @@ let g:rehash256 = 1
 """"""""""""""""""""""
 
 " Set leader shortcut to a comma ','. By default it's the backslash
-let mapleader = ","
+let mapleader = " "
+
+" In normal mode, swap ; and : for quicker access to command mode
+nnoremap ; :
+nnoremap : ;
 
 " Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
 " quickfix window with <leader>a

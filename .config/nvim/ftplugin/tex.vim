@@ -10,3 +10,4 @@
 " Setup forward and backward search for LaTeX pdfs with zathura
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = 'zathura'
+

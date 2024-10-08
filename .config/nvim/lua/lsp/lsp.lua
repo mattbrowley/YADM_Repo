@@ -1,3 +1,5 @@
+require("lsp.mason")
+-- require("lsp.handlers").setup()
 -- Protected call to lspconfig
 local config_ok, _ = pcall(require, "lspconfig")
 if not config_ok then
@@ -18,11 +20,7 @@ lsp_installer.on_server_ready(function(server)
 	 	local jsonls_opts = require("lsp.json")
 	 	opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
 	end
-  if server.name == "sumneko_lua" then
-    local sumneko_opts = require("lsp.lua")
-    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-  end
-  if server.name == "pyright" then
+  if server.name == "pylsp" then
     local python_opts = require("lsp.python")
     opts = vim.tbl_deep_extend("force", python_opts, opts)
   end
@@ -30,5 +28,4 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
 end)
 
-require("lsp.handlers").setup()
 require("lsp.null-ls")

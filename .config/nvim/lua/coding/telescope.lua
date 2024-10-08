@@ -4,6 +4,8 @@ if not status_ok then
 end
 
 telescope.load_extension('media_files')
+telescope.load_extension('notify')
+telescope.load_extension('fzf')
 local actions = require "telescope.actions"
 
 local opts = { noremap = true, silent = true }
@@ -112,8 +114,8 @@ telescope.setup {
     media_files = {
       -- filetypes whitelist
       -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-      filetypes = { "png", "webp", "jpg", "jpeg", "JPG" },
-      find_cmd = "find", -- find command (defaults to `fd`)
+      filetypes = { "png", "webp", "jpg", "jpeg", "JPG", "pdf", "mp4","webm" },
+      find_cmd = "fd-find", -- find command (defaults to `fd`)
     },
     notify = {},
 

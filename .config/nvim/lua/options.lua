@@ -7,6 +7,7 @@ local options = {
   cmdheight = 2, -- more space in the neovim command line for displaying messages
   number = true, -- Show the current line number
   relativenumber = true, -- Show the relative line numbers
+  -- signcolumn = 'yes', -- ['auto'] Keep the sign column on by default
   shiftwidth = 2, -- Num. of spaces used for autoindent
   tabstop = 2, -- Num of spaces for a tab
   softtabstop = 2, -- Num of spaces for a soft tab
@@ -30,12 +31,13 @@ local options = {
   splitright = true, -- [false] Horizontal splits place new window to the right
   textwidth = 0, -- Set the width to 0 columns to disable splitting long lines
   colorcolumn = "+1", -- Draw a highlighted column at 80
-  timeoutlen = 1000, -- Time to wait for a mapped sequence to complete
+  timeoutlen = 500, -- Time to wait for a mapped sequence to complete
   updatetime = 300, -- Time up inactivity which triggers things like writing to swap or updating completion lists
   fileformats = { 'unix', 'dos', 'mac' }, -- Prefer Unix over Windows over OS9
   lazyredraw = true, -- [false] Do not redraw during macros, etc.
   backup = true, -- [false] keep a backup file when saving
   linebreak = true, -- Wrap lines after a word break
+  breakindent = true, -- Match first line indent when a line wraps
   -- wrap = true, -- [true] wrap lines longer than the window width (display only)
   -- smarttab = true,  -- [true] Backspace removes an entire tabs worth of spaces
   -- showcmd = true, -- [true] Show what I'm typing
@@ -78,3 +80,6 @@ vim.g.cursorhold_updatetime = 200
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function() vim.highlight.on_yank({ higroup = 'Visual', timeout = 300 }) end,
 })
+
+-- Enable file recogniztion for the swarm programming game
+vim.cmd[[au BufRead,BufNewFile *.sw setfiletype swarm]]

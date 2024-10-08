@@ -2,10 +2,16 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Try out the NvChad config for neovim
+# export NVIM_APPNAME="nvchad" nvim 
+
 # Give access to the openchemistry binaries
-export PATH=/home/matthewrowley/Apps/openchemistry-build/prefix/bin:$PATH
+# export PATH=/home/matthewrowley/Apps/openchemistry-build/prefix/bin:$PATH
+alias avogadro2=/home/matthewrowley/Apps/Avogadro2-x86_64.AppImage
 # And to gamess
 export PATH=/home/matthewrowley/Apps/gamess/:$PATH
+# And to ORCA
+export PATH=/home/matthewrowley/Apps/orca/:$PATH
 
 # Give access to my python scripts
 PYTHONPATH="${PYTHONPATH}:/home/matthewrowley/Python"
@@ -23,6 +29,9 @@ export GOBIN
 
 # Use the manually installed latest version of go
 export PATH=$PATH:/usr/local/go/bin
+alias go=/usr/local/go/bin/go
+
+alias godot=/home/matthewrowley/Apps/Godot/Godot_v4.3-stable_linux.x86_64
 
 # Add ~/.local/bin to PATH
 export PATH=$PATH:/home/matthewrowley/.local/bin
@@ -150,7 +159,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 neofetch
+
+# fzf improves functionality of zoxide (below)
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# zoxide is a frecency-based smarter cd alternative
+eval "$(zoxide init --cmd cd bash)"
 
 # export PATH="/home/matthewrowley/anaconda3/bin:$PATH"  # commented out by conda initialize
 
@@ -169,3 +185,10 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f "/home/matthewrowley/.ghcup/env" ] && source "/home/matthewrowley/.ghcup/env" # ghcup-env
+

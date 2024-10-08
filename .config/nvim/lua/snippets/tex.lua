@@ -29,6 +29,27 @@ ls.add_snippets("tex", {
   }),
 }, {})
 
+local tex_letter_template = [[
+\documentclass[a4paper,12pt]{article}
+\usepackage[a4paper, margin=1in, total={20cm,27cm}]{geometry}
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\title{$1}
+\author{$2}
+\begin{document}
+\maketitle
+\tableofcontents
+$0
+\addcontentsline{toc}{section}{Unnumbered Section}
+\end{document}]]
+
 local tex_template = [[
 \documentclass[a4paper,12pt]{article}
 \usepackage[a4paper, margin=1in, total={20cm,27cm}]{geometry}
@@ -63,11 +84,24 @@ local tex_table = [[
 
 ls.add_snippets("tex", {
   parse({ trig = "template" }, tex_template),
+  parse({ trig = "letter" }, tex_letter_template),
   parse({ trig = "table" }, tex_table),
+  s({ trig = "mdframed" }, {
+    t { "\\begin{mdframed}", "\t" },
+    i(1),
+    t { "", "\\end{mdframed}", "" },
+    i(0),
+  }),
   s({ trig = "frame" }, {
     t { "\\begin{frame}", "\t" },
     i(1),
     t { "", "\\end{frame}", "" },
+    i(0),
+  }),
+  s({ trig = "minipage" }, {
+    t { "\\begin{minipage}{0.49\\linewidth}", "\t" },
+    i(1),
+    t { "", "\\end{minipage}", "" },
     i(0),
   }),
   s({ trig = "begin" }, {
