@@ -8,6 +8,8 @@
 # Give access to the openchemistry binaries
 # export PATH=/home/matthewrowley/Apps/openchemistry-build/prefix/bin:$PATH
 alias avogadro2=/home/matthewrowley/Apps/Avogadro2-x86_64.AppImage
+alias avogadro=/home/matthewrowley/Apps/Avogadro2-x86_64.AppImage
+
 # And to gamess
 export PATH=/home/matthewrowley/Apps/gamess/:$PATH
 # And to ORCA
