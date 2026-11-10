@@ -6,9 +6,10 @@
 # export NVIM_APPNAME="nvchad" nvim 
 
 # Give access to the openchemistry binaries
+# Deprecated now that there is a good current flatpak
 # export PATH=/home/matthewrowley/Apps/openchemistry-build/prefix/bin:$PATH
-alias avogadro2=/home/matthewrowley/Apps/Avogadro2-x86_64.AppImage
-alias avogadro=/home/matthewrowley/Apps/Avogadro2-x86_64.AppImage
+# alias avogadro2=/home/matthewrowley/Apps/Avogadro2-x86_64.AppImage
+# alias avogadro=/home/matthewrowley/Apps/Avogadro2-x86_64.AppImage
 
 # And to gamess
 export PATH=/home/matthewrowley/Apps/gamess/:$PATH
@@ -194,3 +195,10 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f "/home/matthewrowley/.ghcup/env" ] && source "/home/matthewrowley/.ghcup/env" # ghcup-env
 
+
+export PATH="/home/matthewrowley/.pixi/bin:$PATH"
+
+# opencode
+export PATH=/home/matthewrowley/.opencode/bin:$PATH
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"

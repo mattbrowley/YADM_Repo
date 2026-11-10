@@ -14,6 +14,7 @@ local options = {
 	smartindent = true, -- [false] Autoindent according to syntax
 	foldmethod = "expr", -- Fold based on foldexpr
 	foldlevelstart = 99, -- Don't fold anything when opening a new buffer
+	conceallevel = 1, -- Concealed text is replaced with a single character
 
 	-- File management (Files saved to ~/.local/state/nvim/)
 	autowrite = true, -- [false] Save before :next, :make, etc.
@@ -65,5 +66,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	callback = function()
 		vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
+	end,
+})
+
+-- Fix texlab/colorscheme label misallignment
+vim.api.nvim_create_autocmd("ColorScheme", {
+	pattern = "*",
+	callback = function()
+		vim.api.nvim_set_hl(0, "texCmdEnv", { link = "Include" })
+		vim.api.nvim_set_hl(0, "texCmdPart", { link = "Title" })
+		vim.api.nvim_set_hl(0, "texCmdItem", { link = "Special" })
+		vim.api.nvim_set_hl(0, "texCmd", { link = "Function" })
+		vim.api.nvim_set_hl(0, "texMathCmd", { link = "Type" })
+		vim.api.nvim_set_hl(0, "texDelim", { link = "Delimiter" })
 	end,
 })

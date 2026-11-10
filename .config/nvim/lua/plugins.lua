@@ -14,32 +14,32 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	-- Trial plugins
-    {
-      "epwalsh/pomo.nvim",
-      version = "*",  -- pin to the latest release
-      lazy = true,
-      cmd = { "TimerStart", "TimerRepeat", "TimerSession" },
-      opts = {
-        notifiers = {
-          {
-            name = "Default",
-            opts = {
-              sticky = false, -- This is the magic switch!
-            },
-          },
-        },
-        sessions = {
-          pomodoro = {
-            { name = "Work", duration = "25m" },
-            { name = "Short Break", duration = "5m" },
-            { name = "Work", duration = "25m" },
-            { name = "Short Break", duration = "5m" },
-            { name = "Work", duration = "25m" },
-            { name = "Long Break", duration = "15m" },
-          },
-        },
-      },
-    },
+	{
+		"epwalsh/pomo.nvim",
+		version = "*", -- pin to the latest release
+		lazy = true,
+		cmd = { "TimerStart", "TimerRepeat", "TimerSession" },
+		opts = {
+			notifiers = {
+				{
+					name = "Default",
+					opts = {
+						sticky = false, -- This is the magic switch!
+					},
+				},
+			},
+			sessions = {
+				pomodoro = {
+					{ name = "Work", duration = "25m" },
+					{ name = "Short Break", duration = "5m" },
+					{ name = "Work", duration = "25m" },
+					{ name = "Short Break", duration = "5m" },
+					{ name = "Work", duration = "25m" },
+					{ name = "Long Break", duration = "15m" },
+				},
+			},
+		},
+	},
 
 	-- Snaks core plugin
 	{
@@ -47,7 +47,9 @@ require("lazy").setup({
 		priority = 1000,
 		lazy = false,
 		opts = {
-		    image = { enabled = true },
+			image = {
+				enabled = true,
+			},
 			notifier = { enabled = true },
 			terminal = { enabled = true },
 			explorer = { enabled = true },
@@ -55,8 +57,8 @@ require("lazy").setup({
 			dashboard = {
 				enabled = true,
 				preset = {
- 				    header = [[
- |	                                                 			  
+					header = [[
+ |                                                        
  |\  ██████╗  ██████╗ ██╗    ██╗██╗     ███████╗██╗   ██╗
    \ ██╔══██╗██╔═══██╗██║    ██║██║     ██╔════╝╚██╗ ██╔╝ 
     \██████╔╝██║   ██║██║ █╗ ██║██║     █████╗   ╚████╔╝  
@@ -69,21 +71,30 @@ require("lazy").setup({
  ██████╔╝█████╗  ███████╗█████╗  ███████║██████╔╝██║     ███████║    ██║     ███████║██████╔╝
  ██╔══██╗██╔══╝  ╚════██║██╔══╝  ██╔══██║██╔══██╗██║     ██╔══██║    ██║     ██╔══██║██╔══██╗
  ██║  ██║███████╗███████║███████╗██║  ██║██║  ██║╚██████╗██║  ██║    ███████╗██║  ██║██████╔╝
- ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝    ╚══════╝╚═╝  ╚═╝╚═════╝ ]],	
+ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝    ╚══════╝╚═╝  ╚═╝╚═════╝ ]],
 					keys = {
-                        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
-                        { icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
-                        { icon = " ", key = "p", desc = "Restore Project Session", action = ":lua require('persistence').select()", },
-                        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
-                        { icon = " ", key = "t", desc = "Find Text", action = ":lua Snacks.picker.grep()" },
-                        { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.picker.files({cwd = vim.fn.stdpath('config')})" },
-                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                    },
+						{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
+						{ icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
+						{
+							icon = " ",
+							key = "p",
+							desc = "Restore Project Session",
+							action = ":lua require('persistence').select()",
+						},
+						{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
+						{ icon = " ", key = "t", desc = "Find Text", action = ":lua Snacks.picker.grep()" },
+						{
+							icon = " ",
+							key = "c",
+							desc = "Config",
+							action = ":lua Snacks.picker.files({cwd = vim.fn.stdpath('config')})",
+						},
+						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+					},
 				},
 				sections = {
-				    { section = "header", padding = 2, hl = "Include" }, -- hl = "Keyword" makes it pop!
+					{ section = "header", padding = 2, hl = "Include" }, -- hl = "Keyword" makes it pop!
 					{ section = "keys", gap = 1, padding = 1 },
-			
 					{ text = "https://rowleylab.github.io/", hl = "Type", align = "center", padding = 1 },
 					{ section = "startup", padding = 1 },
 				},
@@ -118,24 +129,24 @@ require("lazy").setup({
 		},
 	},
 	{ "nvim-tree/nvim-web-devicons", opts = { default = true } },
-    {
-      "folke/noice.nvim",
-      event = "VeryLazy",
-      dependencies = {        
-        "MunifTanjim/nui.nvim", 
-      },
-      config = function()
-        require("noice").setup({
-          presets = {
-            bottom_search = true,         
-            command_palette = true,       
-            long_message_to_split = true, 
-            inc_rename = false,           
-            lsp_doc_border = false,       
-          },
-        })
-      end
-    },
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("noice").setup({
+				presets = {
+					bottom_search = true,
+					command_palette = true,
+					long_message_to_split = true,
+					inc_rename = false,
+					lsp_doc_border = false,
+				},
+			})
+		end,
+	},
 
 	-- Aesthetics and UI
 	"arcticicestudio/nord-vim", -- Colorscheme
@@ -215,15 +226,19 @@ require("lazy").setup({
 					lualine_c = { "filename", "aerial" },
 					lualine_x = { diff, spaces, "encoding", filetype },
 					lualine_y = { location, progress },
-					lualine_z = { 
-					  function()
-                        local ok, pomo = pcall(require, "pomo")
-                        if not ok then return "" end
-                        local timer = pomo.get_first_to_finish()
-                        if timer == nil then return "" end
-                        return "⏳ " .. tostring(timer)
-                      end,
-                    },
+					lualine_z = {
+						function()
+							local ok, pomo = pcall(require, "pomo")
+							if not ok then
+								return ""
+							end
+							local timer = pomo.get_first_to_finish()
+							if timer == nil then
+								return ""
+							end
+							return "⏳ " .. tostring(timer)
+						end,
+					},
 				},
 				inactive_sections = {
 					lualine_a = {},
@@ -305,23 +320,22 @@ require("lazy").setup({
 	-- Filetype specific plugins
 	{
 		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
+		ft = "lua",
 		opts = {
 			library = {
-				-- Load luvit types when the `vim.uv` word is found
-                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-               { path = "lazy.nvim", words = { "LazyVim" } },
-              "snack.nvim",
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+				"snack.nvim",
 			},
 		},
 	},
-    
+
 	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 	{
-		"epwalsh/obsidian.nvim",
-		version = "*", -- use latest release instead of latest commit
+		"obsidian-nvim/obsidian.nvim",
+		version = "*",
 		lazy = true,
-		ft = "markdown", -- Only load when you open a markdown file
+		ft = "markdown",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -329,44 +343,52 @@ require("lazy").setup({
 			workspaces = {
 				{
 					name = "personal",
-					path = "~/Documents/Wiki", -- Point this to your actual notes folder!
+					path = "~/Documents/Wiki",
+				},
+				{
+					name = "research",
+					path = "~/Research/Wiki",
+				},
+				{
+					name = "testing",
+					path = "~/Temp/Obsidian",
 				},
 			},
 		},
 	},
-	{
-		"vimwiki/vimwiki",
-		init = function()
-			vim.g.vimwiki_list = {
-				{ path = "~/Documents/Wiki/", ext = ".md", index = "RowleyWiki", syntax = "markdown" },
-			}
-			vim.g.vimwiki_global_ext = 0
-		end,
-	},
-	{
-		"nvim-neorg/neorg",
-		dependencies = { "luarocks.nvim", "nvim-neorg/lua-utils.nvim" },
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {},
-					["core.summary"] = {},
-					["core.presenter"] = { config = { zen_mode = "zen-mode" } },
-					["core.concealer"] = { config = { icon_preset = "basic" } },
-					["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
-					["core.integrations.nvim-cmp"] = {},
-					["core.dirman"] = {
-						config = {
-							workspaces = {
-								notes = "~/notes",
-								rpgs = "~/RPGs/Pathfinder2e/Adventures",
-							},
-						},
-					},
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"vimwiki/vimwiki",
+	-- 	init = function()
+	-- 		vim.g.vimwiki_list = {
+	-- 			{ path = "~/Documents/Wiki/", ext = ".md", index = "RowleyWiki", syntax = "markdown" },
+	-- 		}
+	-- 		vim.g.vimwiki_global_ext = 0
+	-- 	end,
+	-- },
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	dependencies = { "luarocks.nvim", "nvim-neorg/lua-utils.nvim" },
+	-- 	config = function()
+	-- 		require("neorg").setup({
+	-- 			load = {
+	-- 				["core.defaults"] = {},
+	-- 				["core.summary"] = {},
+	-- 				["core.presenter"] = { config = { zen_mode = "zen-mode" } },
+	-- 				["core.concealer"] = { config = { icon_preset = "basic" } },
+	-- 				["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
+	-- 				["core.integrations.nvim-cmp"] = {},
+	-- 				["core.dirman"] = {
+	-- 					config = {
+	-- 						workspaces = {
+	-- 							notes = "~/notes",
+	-- 							rpgs = "~/RPGs/Pathfinder2e/Adventures",
+	-- 						},
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 	"stevearc/vim-arduino",
 	"lervag/vimtex",
 
@@ -525,7 +547,7 @@ require("lazy").setup({
 			},
 			format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 		},
-	},	
+	},
 
 	-- Git and Treesitter
 	{
@@ -569,7 +591,7 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "python", "c", "cpp", "go", "lua", "markdown", "latex", "vimdoc", "vim", "bash" },
+				ensure_installed = { "python", "c", "cpp", "go", "lua", "markdown", "vimdoc", "vim", "bash" },
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
@@ -578,7 +600,6 @@ require("lazy").setup({
 					enable = true,
 				},
 			})
-
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 			vim.opt.foldtext = "" -- Keeps folds looking clean in modern Neovim

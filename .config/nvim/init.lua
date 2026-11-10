@@ -13,6 +13,7 @@ require("keymaps")
 require("plugins")
 
 -- Plugin settings
+vim.g.vimtex_syntax_conceal_disable = 1
 -- Coding & LSP
 require("lsp.mason")
 require("snippets.luasnip")
